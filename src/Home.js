@@ -29,7 +29,7 @@ const locations = [
     },
     {
         lat: 31.4504,
-        lng:73.135
+        lng: 73.135
     }
 ]
 class Home extends Component {
@@ -146,6 +146,13 @@ class Home extends Component {
                 });
             });
     };
+    onUserLocationUpdate(location) {
+        
+           let res = locations.find(f => f.lat === location.coords.latitude && f.lng === location.coords.longitude)
+                if (res) {
+                    alert("near location")
+                }
+    }
     render() {
         return (
             <Mapbox.MapView
@@ -156,13 +163,14 @@ class Home extends Component {
 
                 <Mapbox.UserLocation requestsAlwaysUse={true}
                     // onUpdate={e => console.log(e, "dfgfwrefwefdsfdsfsdf")}
+                    onUpdate={(e) =>  this.onUserLocationUpdate(e)}
                     animated={true} visible={true} showsUserHeadingIndicator={true} />
                 {/* <Mapbox.Camera
                     zoomLevel={16}
                     centerCoordinate={this.state.coordinates[1]}
                 /> */}
                 <Mapbox.Camera
-                animationDuration={2000}
+                    animationDuration={2000}
                     zoomLevel={16}
                     followUserMode={'normal'}
                     // followUserLocation={true}
