@@ -1,0 +1,6 @@
+module Pods_location_locationTests {
+  umbrella header "Pods-location-locationTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

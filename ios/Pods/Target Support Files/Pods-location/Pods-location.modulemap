@@ -1,0 +1,6 @@
+module Pods_location {
+  umbrella header "Pods-location-umbrella.h"
+
+  export *
+  module * { export * }
+}

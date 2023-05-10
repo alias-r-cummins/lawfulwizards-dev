@@ -1,0 +1,41 @@
+{
+  "name": "rnmapbox-maps",
+  "summary": "React Native Component for Mapbox",
+  "version": "10.0.4",
+  "authors": {
+    "Miklós Fazekas": "mfazekas@szemafor.com (https://github.com/mfazekas/)"
+  },
+  "homepage": "https://github.com/rnmapbox/maps#readme",
+  "source": {
+    "git": "https://github.com/rnmapbox/maps.git"
+  },
+  "license": "MIT",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "dependencies": {
+    "MapboxMaps": [
+      "~> 10.12.2"
+    ],
+    "Turf": [
+
+    ],
+    "React-Core": [
+
+    ],
+    "React": [
+
+    ]
+  },
+  "swift_versions": "5.0",
+  "default_subspecs": [
+    "DynamicLibrary"
+  ],
+  "subspecs": [
+    {
+      "name": "DynamicLibrary",
+      "source_files": "ios/RCTMGL-v10/**/*.{h,m,swift}"
+    }
+  ],
+  "swift_version": "5.0"
+}
