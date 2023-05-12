@@ -41,20 +41,18 @@ public struct CircleAnnotation: Annotation {
     }
 
     /// Create a circle annotation with a `Point` and an optional identifier.
-    public init(id: String = UUID().uuidString, point: Point, isSelected: Bool = false, isDraggable: Bool = false) {
+    public init(id: String = UUID().uuidString, point: Point) {
         self.id = id
         self.point = point
-        self.isSelected = isSelected
-        self.isDraggable = isDraggable
     }
 
     /// Create a circle annotation with a center coordinate and an optional identifier
     /// - Parameters:
     ///   - id: Optional identifier for this annotation
     ///   - coordinate: Coordinate where this circle annotation should be centered
-    public init(id: String = UUID().uuidString, centerCoordinate: CLLocationCoordinate2D, isSelected: Bool = false, isDraggable: Bool = false) {
+    public init(id: String = UUID().uuidString, centerCoordinate: CLLocationCoordinate2D) {
         let point = Point(centerCoordinate)
-        self.init(id: id, point: point, isSelected: isSelected, isDraggable: isDraggable)
+        self.init(id: id, point: point)
     }
 
     // MARK: - Style Properties -

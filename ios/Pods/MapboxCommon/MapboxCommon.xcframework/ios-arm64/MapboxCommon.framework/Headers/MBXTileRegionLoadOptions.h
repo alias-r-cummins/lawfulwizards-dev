@@ -107,9 +107,7 @@ __attribute__((visibility ("default")))
  *
  * If provided, contains an object value with extra tile region load options.
  *
- * Currently supported options:
- *  * force_refresh: if set to a true boolean value, all tiles in the group will be loaded instead of loading only
- *                   missing or expired tiles.
+ * There are currently no extra options.
  */
 @property (nonatomic, readonly, nullable, copy) id extraOptions;
 

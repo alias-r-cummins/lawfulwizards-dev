@@ -15,7 +15,7 @@ extension UserDefaults {
 }
 
 internal protocol EventsManagerProtocol: AnyObject {
-    func sendMapLoadEvent(with traits: UITraitCollection)
+    func sendMapLoadEvent()
 
     func sendTurnstile()
 
@@ -38,10 +38,9 @@ internal final class EventsManager: EventsManagerProtocol {
     private let metricsEnabledObservation: NSKeyValueObservation
 
     internal init(accessToken: String) {
-        let eventsServerOptions = EventsServerOptions(
-            token: accessToken,
-            userAgentFragment: Constants.UserAgent,
-            deferredDeliveryServiceOptions: nil)
+        let eventsServerOptions = EventsServerOptions(token: accessToken,
+                                                      userAgentFragment: Constants.MGLAPIClientUserAgentBase,
+                                                      deferredDeliveryServiceOptions: nil)
         eventsService = EventsService.getOrCreate(for: eventsServerOptions)
         telemetryService = TelemetryService.getOrCreate(for: eventsServerOptions)
 
@@ -58,7 +57,9 @@ internal final class EventsManager: EventsManagerProtocol {
         }
     }
 
-    private func getContentScale(for preferredContentSizeCategory: UIContentSizeCategory) -> Int {
+    private func getContentScale() -> Int {
+        let sc = UIApplication.shared.preferredContentSizeCategory
+
         let defaultScale = -9999
         let scToScale: [UIContentSizeCategory: Int] = [
             .extraSmall: -3,
@@ -75,7 +76,7 @@ internal final class EventsManager: EventsManagerProtocol {
             .accessibilityExtraExtraExtraLarge: 13
         ]
 
-        return scToScale[preferredContentSizeCategory] ?? defaultScale
+        return scToScale[sc] ?? defaultScale
     }
 
     private func getOrientation() -> String {
@@ -105,14 +106,14 @@ internal final class EventsManager: EventsManagerProtocol {
         return String(cString: model)
     }
 
-    private func getMapLoadEventAttributes(for traits: UITraitCollection) -> [String: Any] {
+    private func getMapLoadEventAttributes() -> [String: Any] {
         let event = "map.load"
         let created = ISO8601DateFormatter().string(from: Date())
         let userId = UIDevice.current.identifierForVendor?.uuidString ?? ""
         let model = lookupDeviceModel()
         let operatingSystem = String(format: "%@ %@", UIDevice.current.systemName, UIDevice.current.systemVersion)
         let resolution = UIScreen.main.nativeScale
-        let accessibilityFontScale = self.getContentScale(for: traits.preferredContentSizeCategory)
+        let accessibilityFontScale = self.getContentScale()
         let orientation = self.getOrientation()
         let wifi = ReachabilityFactory.reachability(forHostname: nil).currentNetworkStatus() == .reachableViaWiFi
 
@@ -131,8 +132,8 @@ internal final class EventsManager: EventsManagerProtocol {
         return eventAttributes
     }
 
-    internal func sendMapLoadEvent(with traits: UITraitCollection) {
-        let attributes = self.getMapLoadEventAttributes(for: traits)
+    internal func sendMapLoadEvent() {
+        let attributes = self.getMapLoadEventAttributes()
         let mapLoadEvent = MapboxCommon_Private.Event(priority: .queued,
                                                       attributes: attributes,
                                                       deferredOptions: nil)

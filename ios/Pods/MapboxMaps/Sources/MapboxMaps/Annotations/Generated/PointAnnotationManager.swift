@@ -15,9 +15,7 @@ public class PointAnnotationManager: AnnotationManagerInternal {
     }
 
     private var needsSyncSourceAndLayer = false
-    /// List of images used by this ``PointAnnotationManager``.
-    private(set) internal var allImages = Set<String>()
-    private let imagesManager: AnnotationImagesManagerProtocol
+    private var addedImages = Set<String>()
     private var clusterOptions: ClusterOptions?
 
     // MARK: - Interaction
@@ -68,20 +66,16 @@ public class PointAnnotationManager: AnnotationManagerInternal {
                   layerPosition: LayerPosition?,
                   displayLinkCoordinator: DisplayLinkCoordinator,
                   clusterOptions: ClusterOptions? = nil,
-                  imagesManager: AnnotationImagesManagerProtocol,
                   offsetPointCalculator: OffsetPointCalculator) {
         self.id = id
         self.sourceId = id
         self.layerId = id
         self.style = style
         self.clusterOptions = clusterOptions
-        self.imagesManager = imagesManager
         self.displayLinkCoordinator = displayLinkCoordinator
         self.offsetPointCalculator = offsetPointCalculator
         self.dragLayerId = id + "_drag-layer"
         self.dragSourceId = id + "_drag-source"
-
-        imagesManager.register(imagesConsumer: self)
 
         do {
             // Add the source with empty `data` property
@@ -198,7 +192,7 @@ public class PointAnnotationManager: AnnotationManagerInternal {
                 forMessage: "Failed to remove source for PointAnnotationManager with id \(id) due to error: \(error)",
                 category: "Annotations")
         }
-        removeAllImages()
+        removeImages(from: style, images: addedImages)
         displayLinkCoordinator?.remove(displayLinkParticipant)
     }
 
@@ -216,12 +210,12 @@ public class PointAnnotationManager: AnnotationManagerInternal {
 
         let newImages = Set(annotations.compactMap(\.image) + [annotationBeingDragged].compactMap(\.?.image))
         let newImageNames = Set(newImages.map(\.name))
-        let unusedImages = allImages.subtracting(newImageNames)
+        let unusedImages = addedImages.subtracting(newImageNames)
 
-        addImages(newImages)
-        allImages = newImageNames
+        addImagesToStyleIfNeeded(style: style, images: newImages)
+        removeImages(from: style, images: unusedImages)
 
-        removeImages(unusedImages)
+        addedImages = newImageNames
 
         // Construct the properties dictionary from the annotations
         let dataDrivenLayerPropertyKeys = Set(annotations.flatMap { $0.layerProperties.keys })
@@ -615,7 +609,7 @@ public class PointAnnotationManager: AnnotationManagerInternal {
     }
 
     internal func handleDragBegin(with featureIdentifiers: [String]) {
-        guard let annotation = annotations.first(where: { featureIdentifiers.contains($0.id) && $0.isDraggable }) else { return }
+        guard let annotation = annotations.first(where: { featureIdentifiers.contains($0.id) }) else { return }
         createDragSourceAndLayer()
 
         annotationBeingDragged = annotation
@@ -648,7 +642,7 @@ public class PointAnnotationManager: AnnotationManagerInternal {
         self.annotationBeingDragged = nil
 
         // avoid blinking annotation by waiting
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.removeDragSourceAndLayer()
         }
     }
@@ -660,24 +654,4 @@ extension PointAnnotationManager: DelegatingDisplayLinkParticipantDelegate {
     }
 }
 
-private extension PointAnnotationManager {
-
-    func addImages(_ images: Set<PointAnnotation.Image>) {
-        for image in images {
-            imagesManager.addImage(image.image, id: image.name, sdf: false, contentInsets: .zero)
-        }
-    }
-
-    func removeImages(_ names: Set<String>) {
-        for imageName in names {
-            imagesManager.removeImage(imageName)
-        }
-    }
-
-    func removeAllImages() {
-        let imagesToRemove = allImages
-        allImages.removeAll()
-        removeImages(imagesToRemove)
-    }
-}
 // End of generated file.

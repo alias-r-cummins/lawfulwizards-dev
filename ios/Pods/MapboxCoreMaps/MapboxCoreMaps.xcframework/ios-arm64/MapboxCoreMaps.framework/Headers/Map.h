@@ -21,7 +21,6 @@
 #import "MBMQueriedFeature.h"
 #import "MBMRenderCacheOptions.h"
 #import "MBMViewAnnotationOptions.h"
-#import "MBMTileCoverOptions.h"
 #import "MBMMap.h"
 #import "MBMMapMemoryBudget.h"
 #import "MBMRenderedQueryGeometry.h"

@@ -27,6 +27,4 @@ __attribute__((visibility ("default")))
 @property (nonatomic, readonly) uint32_t y;
 
 
-- (BOOL)isEqualToCanonicalTileID:(nonnull MBMCanonicalTileID *)other;
-
 @end

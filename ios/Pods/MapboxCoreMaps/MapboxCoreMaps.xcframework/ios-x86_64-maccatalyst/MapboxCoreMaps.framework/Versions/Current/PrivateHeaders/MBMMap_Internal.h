@@ -46,6 +46,4 @@
                                                                          options:(nonnull MBMViewAnnotationOptions *)options __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)removeViewAnnotationForIdentifier:(nonnull NSString *)identifier __attribute((ns_returns_retained));
 - (nonnull MBXExpected<MBMViewAnnotationOptions *, NSString *> *)getViewAnnotationOptionsForIdentifier:(nonnull NSString *)identifier __attribute((ns_returns_retained));
-- (nonnull NSArray<MBMCanonicalTileID *> *)tileCoverForTileCoverOptions:(nonnull MBMTileCoverOptions *)tileCoverOptions
-                                                          cameraOptions:(nullable MBMCameraOptions *)cameraOptions __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
 @end

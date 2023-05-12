@@ -2,7 +2,7 @@
 
 #import <Foundation/Foundation.h>
 
-/** The information about style object (source or layer or light). */
+/** The information about style object (source or layer). */
 NS_SWIFT_NAME(StyleObjectInfo)
 __attribute__((visibility ("default")))
 @interface MBMStyleObjectInfo : NSObject

@@ -17,13 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>23.4.0</string>
+	<string>23.2.3</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>23.4.0</string>
+	<string>23.2.3</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -43,7 +43,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.15</string>
 	<key>MBXBundleVersion</key>
-	<string>23.4.0</string>
+	<string>23.2.3</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>2</integer>

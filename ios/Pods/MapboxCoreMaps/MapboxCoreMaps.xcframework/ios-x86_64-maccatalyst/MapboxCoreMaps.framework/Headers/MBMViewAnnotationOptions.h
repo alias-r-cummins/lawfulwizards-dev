@@ -35,7 +35,7 @@ __attribute__((visibility ("default")))
 /**
  * Optional style symbol id connected to given view annotation.
  *
- * View annotation's visibility behaviour becomes tied to feature visibility where feature could represent an icon or a text label in a symbol layer.
+ * View annotation's visibility behaviour becomes tied to feature visibility where feature could represent an icon or a text label.
  * E.g. if the bounded symbol is not visible view annotation also becomes not visible.
  *
  * Note: Invalid associatedFeatureId (meaning no actual symbol has such feature id) will lead to the corresponding annotation to be invisible.

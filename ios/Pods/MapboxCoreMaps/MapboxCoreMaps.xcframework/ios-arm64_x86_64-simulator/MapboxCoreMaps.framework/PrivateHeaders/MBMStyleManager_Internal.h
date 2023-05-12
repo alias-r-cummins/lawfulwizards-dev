@@ -33,22 +33,12 @@
                                                                         properties:(nonnull id)properties __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleGeoJSONSourceDataForSourceId:(nonnull NSString *)sourceId
                                                                                data:(nonnull MBMGeoJSONSourceData *)data __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
-- (nonnull MBXExpected<NSNull *, NSString *> *)setStyleGeoJSONSourceDataForSourceId:(nonnull NSString *)sourceId
-                                                                             dataId:(nonnull NSString *)dataId
-                                                                               data:(nonnull MBMGeoJSONSourceData *)data __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
 - (nonnull MBXExpected<NSNull *, NSString *> *)updateStyleImageSourceImageForSourceId:(nonnull NSString *)sourceId
                                                                                 image:(nonnull MBMImage *)image __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)removeStyleSourceForSourceId:(nonnull NSString *)sourceId __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleLightForProperties:(nonnull id)properties __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleLightPropertyForProperty:(nonnull NSString *)property
                                                                           value:(nonnull id)value __attribute((ns_returns_retained));
-- (nonnull NSArray<MBMStyleObjectInfo *> *)getStyleLights __attribute((ns_returns_retained));
-- (nonnull MBXExpected<NSNull *, NSString *> *)setStyleLightsForLights:(nonnull id)lights __attribute((ns_returns_retained));
-- (nonnull MBMStylePropertyValue *)getStyleLightPropertyForId:(nonnull NSString *)id
-                                                     property:(nonnull NSString *)property __attribute((ns_returns_retained));
-- (nonnull MBXExpected<NSNull *, NSString *> *)setStyleLightPropertyForId:(nonnull NSString *)id
-                                                                 property:(nonnull NSString *)property
-                                                                    value:(nonnull id)value __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleAtmosphereForProperties:(nonnull id)properties __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleAtmospherePropertyForProperty:(nonnull NSString *)property
                                                                                value:(nonnull id)value __attribute((ns_returns_retained));

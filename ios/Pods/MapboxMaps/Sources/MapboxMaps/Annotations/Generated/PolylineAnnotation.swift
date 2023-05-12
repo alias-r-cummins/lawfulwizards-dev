@@ -41,17 +41,15 @@ public struct PolylineAnnotation: Annotation {
     }
 
     /// Create a polyline annotation with a `LineString` and an optional identifier.
-    public init(id: String = UUID().uuidString, lineString: LineString, isSelected: Bool = false, isDraggable: Bool = false) {
+    public init(id: String = UUID().uuidString, lineString: LineString) {
         self.id = id
         self.lineString = lineString
-        self.isSelected = isSelected
-        self.isDraggable = isDraggable
     }
 
     /// Create a polyline annotation with an array of coordinates and an optional identifier.
-    public init(id: String = UUID().uuidString, lineCoordinates: [CLLocationCoordinate2D], isSelected: Bool = false, isDraggable: Bool = false) {
+    public init(id: String = UUID().uuidString, lineCoordinates: [CLLocationCoordinate2D]) {
         let lineString = LineString(lineCoordinates)
-        self.init(id: id, lineString: lineString, isSelected: isSelected, isDraggable: isDraggable)
+        self.init(id: id, lineString: lineString)
     }
 
     // MARK: - Style Properties -

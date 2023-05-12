@@ -12,10 +12,6 @@
 		<data>
 		wSbw6ZEWwI4IDMJxXo/fU3xPLic=
 		</data>
-		<key>Headers/MBXDataRef.h</key>
-		<data>
-		RlugCkj6luxkFYUB5MuOG2zSyhg=
-		</data>
 		<key>Headers/MBXDownloadError.h</key>
 		<data>
 		0vX1V/JVobVbyi3c2TdoXFxZMwA=
@@ -50,7 +46,7 @@
 		</data>
 		<key>Headers/MBXHttpHeaders.h</key>
 		<data>
-		j4qhGeS1UPIax8SMOmSiT6Ishxg=
+		Oj5y2xNONF57ogc+MwmyXGOQwOA=
 		</data>
 		<key>Headers/MBXHttpMethod.h</key>
 		<data>
@@ -210,7 +206,7 @@
 		</data>
 		<key>Headers/MBXTileRegionLoadOptions.h</key>
 		<data>
-		Kns2jxyjXiJw4pnMqH9zMzLe3U0=
+		iHNWddr2waVY4ASW0AsPyW7Jmgo=
 		</data>
 		<key>Headers/MBXTileRegionLoadProgress.h</key>
 		<data>
@@ -282,7 +278,7 @@
 		</data>
 		<key>Headers/MapboxCommon.h</key>
 		<data>
-		E71qfxXGCtwoVpFaKUNZUC34hsg=
+		M3NgoSXq924bDShMN1I7OCIUC5w=
 		</data>
 		<key>Headers/MapboxHttp.h</key>
 		<data>
@@ -322,7 +318,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		eOURNXm6qpypS8Jkqnif+UWaIws=
+		fA/+W4c6GwHo49YjhowmyAvhZkE=
 		</data>
 		<key>Modules/MapboxCommon.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -610,7 +606,7 @@
 		</data>
 		<key>PrivateHeaders/MBXResourceLoadFlags_Internal.h</key>
 		<data>
-		+SB8w/jSYAl5YMOvbZBPQZm9Gyc=
+		pctUp51hspCLgjnys8W0Szwvq+Q=
 		</data>
 		<key>PrivateHeaders/MBXResourceLoadOptions_Internal.h</key>
 		<data>
@@ -833,13 +829,6 @@
 			mCc6z79r3kozTS0TDHasIjCqSRRmBJEyrKJBRFPw+KQ=
 			</data>
 		</dict>
-		<key>Headers/MBXDataRef.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			a0SVR2vFbAxv70BiNO6/FoGMyVGd5m1iv+78wjZ+HdQ=
-			</data>
-		</dict>
 		<key>Headers/MBXDownloadError.h</key>
 		<dict>
 			<key>hash2</key>
@@ -900,7 +889,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			l9slc3ah2wW1ZODPwDPD3VcwpeH1J5fX8Bw4BocPeHc=
+			KAXlQW+GkN2BPTrnfFcQUi7Ki7GM2vgcCxk0l22u260=
 			</data>
 		</dict>
 		<key>Headers/MBXHttpMethod.h</key>
@@ -1180,7 +1169,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OKwzqFECH/i30aVFigRV8rcpaWCFZ7+OSudgyW7DCuY=
+			o7KhnWZua5XjM3Jq82ObR+GSEFEuTD34jn6ZRqMjjlg=
 			</data>
 		</dict>
 		<key>Headers/MBXTileRegionLoadProgress.h</key>
@@ -1306,7 +1295,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cvOb20kGNfXdx8hmNfMHYPdgXYEhotwrgn6i6rKQD+Y=
+			gwJn0p/JaboE+wek5vVmOyeTf9uGxbIOE0f7Mmm742U=
 			</data>
 		</dict>
 		<key>Headers/MapboxHttp.h</key>
@@ -1873,7 +1862,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yoXcOvLaTFQIgNAJeN3wRxurN2EZzQdHnZD9Weaf3Zw=
+			Ng+6IKXMQ34cSaA5NDoKXAj+r9Zg1s/NJGrRhEMFre0=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MBXResourceLoadOptions_Internal.h</key>

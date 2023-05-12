@@ -26,6 +26,7 @@ public protocol AnnotationManager: AnyObject {
 }
 
 internal protocol AnnotationManagerInternal: AnnotationManager {
+    var delegate: AnnotationInteractionDelegate? { get }
 
     func destroy()
 
@@ -74,8 +75,7 @@ public final class AnnotationOrchestrator {
     public func makePointAnnotationManager(id: String = String(UUID().uuidString.prefix(5)),
                                            layerPosition: LayerPosition? = nil,
                                            clusterOptions: ClusterOptions? = nil) -> PointAnnotationManager {
-        // swiftlint:disable:next force_cast
-        return impl.makePointAnnotationManager(id: id, layerPosition: layerPosition, clusterOptions: clusterOptions) as! PointAnnotationManager
+        return impl.makePointAnnotationManager(id: id, layerPosition: layerPosition, clusterOptions: clusterOptions)
     }
 
     /// Creates a `PolygonAnnotationManager` which is used to manage a collection of
@@ -89,8 +89,7 @@ public final class AnnotationOrchestrator {
     /// - Returns: An instance of `PolygonAnnotationManager`
     public func makePolygonAnnotationManager(id: String = String(UUID().uuidString.prefix(5)),
                                              layerPosition: LayerPosition? = nil) -> PolygonAnnotationManager {
-        // swiftlint:disable:next force_cast
-        return impl.makePolygonAnnotationManager(id: id, layerPosition: layerPosition) as! PolygonAnnotationManager
+        return impl.makePolygonAnnotationManager(id: id, layerPosition: layerPosition)
     }
 
     /// Creates a `PolylineAnnotationManager` which is used to manage a collection of
@@ -104,8 +103,7 @@ public final class AnnotationOrchestrator {
     /// - Returns: An instance of `PolylineAnnotationManager`
     public func makePolylineAnnotationManager(id: String = String(UUID().uuidString.prefix(5)),
                                               layerPosition: LayerPosition? = nil) -> PolylineAnnotationManager {
-        // swiftlint:disable:next force_cast
-        return impl.makePolylineAnnotationManager(id: id, layerPosition: layerPosition) as! PolylineAnnotationManager
+        return impl.makePolylineAnnotationManager(id: id, layerPosition: layerPosition)
     }
 
     /// Creates a `CircleAnnotationManager` which is used to manage a collection of
@@ -119,8 +117,7 @@ public final class AnnotationOrchestrator {
     /// - Returns: An instance of `CircleAnnotationManager`
     public func makeCircleAnnotationManager(id: String = String(UUID().uuidString.prefix(5)),
                                             layerPosition: LayerPosition? = nil) -> CircleAnnotationManager {
-        // swiftlint:disable:next force_cast
-        return impl.makeCircleAnnotationManager(id: id, layerPosition: layerPosition) as! CircleAnnotationManager
+        return impl.makeCircleAnnotationManager(id: id, layerPosition: layerPosition)
     }
 
     /// Removes an annotation manager, this will remove the underlying layer and source from the style.

@@ -11,6 +11,7 @@ import Mapbox, { MarkerView, Callout } from '@rnmapbox/maps';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { wp } from './helper';
+import * as Location from 'react-native-location';
 
 
 
@@ -51,7 +52,14 @@ class Home extends Component {
             ],
         }
     }
-    componentDidMount() {
+    async componentDidMount() {
+        let granted = await Location.requestPermission({ ios: "whenInUse", android: { detail: "fine" } });
+
+        if (!granted) {
+            return this.setState({ showAlert: true, alertMessage: 'Permission to access location was denied!' })
+
+            //alert('Permission to access location was denied');
+        }
         Geocoder.init("AIzaSyDpVrgba7CrGoP5144CtbxhQ6Q5_e8Y_Kg");
         this.getOneTimeLocation()
         request(PERMISSIONS.IOS.LOCATION_ALWAYS).then((RESULTS) => {
@@ -147,11 +155,11 @@ class Home extends Component {
             });
     };
     onUserLocationUpdate(location) {
-        
-           let res = locations.find(f => f.lat === location.coords.latitude && f.lng === location.coords.longitude)
-                if (res) {
-                    alert("near location")
-                }
+
+        let res = locations.find(f => f.lat === location.coords.latitude && f.lng === location.coords.longitude)
+        if (res) {
+            alert("near location")
+        }
     }
     render() {
         return (
@@ -163,7 +171,7 @@ class Home extends Component {
 
                 <Mapbox.UserLocation requestsAlwaysUse={true}
                     // onUpdate={e => console.log(e, "dfgfwrefwefdsfdsfsdf")}
-                    onUpdate={(e) =>  this.onUserLocationUpdate(e)}
+                    onUpdate={(e) => this.onUserLocationUpdate(e)}
                     animated={true} visible={true} showsUserHeadingIndicator={true} />
                 {/* <Mapbox.Camera
                     zoomLevel={16}

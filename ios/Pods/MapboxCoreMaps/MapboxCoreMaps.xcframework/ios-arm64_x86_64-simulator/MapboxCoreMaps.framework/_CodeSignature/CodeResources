@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/MBMCanonicalTileID.h</key>
 		<data>
-		Os3VRj+LAFANqEYH+aMs6ghpYDE=
+		xpPAofdgYcCbQifvHZoSjqiK/dM=
 		</data>
 		<key>Headers/MBMConstrainMode.h</key>
 		<data>
@@ -138,7 +138,7 @@
 		</data>
 		<key>Headers/MBMMap.h</key>
 		<data>
-		V+fJ9Z58QrwdTUIxXI23Jq6M0UY=
+		ToHlBuusSdiwlYYRixkz+PULm1s=
 		</data>
 		<key>Headers/MBMMapConstants.h</key>
 		<data>
@@ -150,7 +150,7 @@
 		</data>
 		<key>Headers/MBMMapEvents.h</key>
 		<data>
-		TETEAsDcPqh3fzf3bio/si7ICkU=
+		E9DAcqMjuqRqLh1JpI6436vpTjE=
 		</data>
 		<key>Headers/MBMMapMemoryBudget.h</key>
 		<data>
@@ -290,7 +290,7 @@
 		</data>
 		<key>Headers/MBMStyleObjectInfo.h</key>
 		<data>
-		edEdrkD9aW0C9UxbMdtItp5t+nU=
+		3zHnYUQ0un0C3UqT9ysTHAK0xLc=
 		</data>
 		<key>Headers/MBMStylePack.h</key>
 		<data>
@@ -323,10 +323,6 @@
 		<key>Headers/MBMStylePropertyValueKind.h</key>
 		<data>
 		VvJ6Yq6X/FMsB4vYpVYmFE1ZULg=
-		</data>
-		<key>Headers/MBMTileCoverOptions.h</key>
-		<data>
-		Le+QNR6Ct9h8HzyrkXjE4TEw8EI=
 		</data>
 		<key>Headers/MBMTileOptions.h</key>
 		<data>
@@ -362,7 +358,7 @@
 		</data>
 		<key>Headers/MBMViewAnnotationOptions.h</key>
 		<data>
-		8lW+q2UE+4GOWDgp+t/A6pwutmI=
+		iZDCBucGgQKc5VURx6gGm8xNRCk=
 		</data>
 		<key>Headers/MBMViewAnnotationPositionDescriptor.h</key>
 		<data>
@@ -374,7 +370,7 @@
 		</data>
 		<key>Headers/Map.h</key>
 		<data>
-		g9j/gkz4NJK0c7FjLj7l3BNpEpA=
+		TVnXZfQpCHjbYgDYQ1L7LdqVM0Q=
 		</data>
 		<key>Headers/MapConstants.h</key>
 		<data>
@@ -462,11 +458,11 @@
 		</data>
 		<key>PrivateHeaders/MBMMapSnapshotter_Internal.h</key>
 		<data>
-		wIOwiSRdHQLC1eDU1bhCKEP1PdM=
+		qBixRlVV1TMPVDo+BlPRf7W9ztw=
 		</data>
 		<key>PrivateHeaders/MBMMap_Internal.h</key>
 		<data>
-		w/Sx0WPpdENWJXxN5r/Acltp2Q0=
+		Co0y1pV2p5Q7utGe/Js7/zdaH1w=
 		</data>
 		<key>PrivateHeaders/MBMMetalViewProvider.h</key>
 		<data>
@@ -522,7 +518,7 @@
 		</data>
 		<key>PrivateHeaders/MBMStyleManager_Internal.h</key>
 		<data>
-		FkXD3bbJUNGif4N+1uh70tTEf7k=
+		J71LqBkhGBhwmOWSutfsrBGSJWs=
 		</data>
 		<key>PrivateHeaders/MBMStylePackCallback_Internal.h</key>
 		<data>
@@ -665,7 +661,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZPb0h2+OD6KlGJJ4aBaJnSF8jT5ETP+GVOHmzBLUg/Y=
+			y5ysaypD+QSHTFGF8o2jdqgbcuxnLeKcvsb9T8AI7Oc=
 			</data>
 		</dict>
 		<key>Headers/MBMConstrainMode.h</key>
@@ -826,7 +822,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZiYCRTOCvQ1ozhMjuDm1l6Nke5XGrr+u311cuOqWJL0=
+			TAptIk4hzaxmsPRspZDvAW6Y35J7hxs5qKqiPwKIjiA=
 			</data>
 		</dict>
 		<key>Headers/MBMMapConstants.h</key>
@@ -847,7 +843,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pk3UGFYJy6Wxp/2Bfe98RZxaqvRiHv5aBoDISqTAoIA=
+			QBpeOezwFapY1zH/stUd0rBYbwbUP8ePrys3SXPociE=
 			</data>
 		</dict>
 		<key>Headers/MBMMapMemoryBudget.h</key>
@@ -1092,7 +1088,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rf3CZz6vONXoQJJF3HWQXGW5kT9Q1DctK1ux0uq/9f8=
+			OugYYQaIDKhYjVkQSGXF+a7LfiSmvovqa+P19SmeZOw=
 			</data>
 		</dict>
 		<key>Headers/MBMStylePack.h</key>
@@ -1149,13 +1145,6 @@
 			<key>hash2</key>
 			<data>
 			Ma79LKlgzdaJ3MYhTTip0xtJqlKV9Wm/90A4H3G837M=
-			</data>
-		</dict>
-		<key>Headers/MBMTileCoverOptions.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			HeFQFUWDGtfWi2wzlMTsNofmFKod7yH/BhPOCbWkdDA=
 			</data>
 		</dict>
 		<key>Headers/MBMTileOptions.h</key>
@@ -1218,7 +1207,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mx9Ck6UVnyl7X6LTeMZ883JySqSJ/mZ9fDrdDkxGS9Q=
+			1ZJvsPcPDFUiR7lgUqLsbyDlplga1G2ZtTVo7tmH2E8=
 			</data>
 		</dict>
 		<key>Headers/MBMViewAnnotationPositionDescriptor.h</key>
@@ -1239,7 +1228,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m9aib2sDjEySte8B2hBydu8xab5o1zBR8w7xhnuo8sU=
+			UcJrxkH77Uy+a95urqg6977SZO5YSIRHvZUbOMBm6V4=
 			</data>
 		</dict>
 		<key>Headers/MapConstants.h</key>
@@ -1386,14 +1375,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pz3EpilaaDCfqLCcTbT/CeIOqi4iNldDwwp/HXOevQo=
+			q5pPKjNMjQMy2KUlXQAABtYw2rEgy+UyxdpVAX50RIY=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MBMMap_Internal.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RwP1OPHExK5DF1FdLAs3vR+XztJO3KiyAuii0IKYcyI=
+			5ah9OlHG97YVeWa7E3x0Cp0FOR6Q7KKdpvB77zADzbc=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MBMMetalViewProvider.h</key>
@@ -1491,7 +1480,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5uAmIWvPHDp0m93AvG30FuE1yc8HWJnWLKPwNMYvFGg=
+			XhKx6KkZxCo+pI6HNZjIdfhVgOL7SD+45vub50IVjik=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MBMStylePackCallback_Internal.h</key>

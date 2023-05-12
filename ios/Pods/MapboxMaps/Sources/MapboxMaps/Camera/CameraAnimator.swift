@@ -15,9 +15,6 @@ internal protocol CameraAnimatorProtocol: CameraAnimator {
     /// The animation's owner.
     var owner: AnimationOwner { get }
 
-    /// Type of the embeded animation
-    var animationType: AnimationType { get }
-
     /// Implementations must use a weak reference.
     var delegate: CameraAnimatorDelegate? { get set }
 

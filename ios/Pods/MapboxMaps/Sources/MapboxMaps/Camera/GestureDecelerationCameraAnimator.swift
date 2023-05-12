@@ -45,16 +45,12 @@ internal final class GestureDecelerationCameraAnimator: NSObject, CameraAnimator
     }
 
     internal let owner: AnimationOwner
-
-    internal let animationType: AnimationType
-
     internal weak var delegate: CameraAnimatorDelegate?
 
     internal init(location: CGPoint,
                   velocity: CGPoint,
                   decelerationFactor: CGFloat,
                   owner: AnimationOwner,
-                  type: AnimationType = .deceleration,
                   locationChangeHandler: @escaping (_ fromLocation: CGPoint, _ toLocation: CGPoint) -> Void,
                   mainQueue: MainQueueProtocol,
                   dateProvider: DateProvider) {
@@ -62,7 +58,6 @@ internal final class GestureDecelerationCameraAnimator: NSObject, CameraAnimator
         self.velocity = velocity
         self.decelerationFactor = decelerationFactor
         self.owner = owner
-        self.animationType = type
         self.locationChangeHandler = locationChangeHandler
         self.mainQueue = mainQueue
         self.dateProvider = dateProvider

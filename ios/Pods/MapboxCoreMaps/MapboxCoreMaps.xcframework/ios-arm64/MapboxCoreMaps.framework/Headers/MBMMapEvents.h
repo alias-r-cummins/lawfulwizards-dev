@@ -184,10 +184,9 @@ __attribute__((visibility ("default")))
      * ├── type - String ("metadata" | "tile")
      * ├── loaded - optional Boolean
      * └── tile-id - optional Object
-     * |   ├── z Number (zoom level)
-     * |   ├── x Number (x coordinate)
-     * |   └── y Number (y coordinate)
-     * └── data-id - optional String
+     *     ├── z Number (zoom level)
+     *     ├── x Number (x coordinate)
+     *     └── y Number (y coordinate)
      * ```
      */
     @property (nonatomic, class, readonly) NSString * SourceDataLoaded;

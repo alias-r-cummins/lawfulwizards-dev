@@ -37,7 +37,5 @@ __attribute__((visibility ("default")))
     @property (nonatomic, class, readonly) NSString * XDeltaBase;
     /** X-Rate-Limit-Reset response header. */
     @property (nonatomic, class, readonly) NSString * XRateLimitReset;
-    /** Custom token restriction header. */
-    @property (nonatomic, class, readonly) NSString * XAppInfo;
 
 @end

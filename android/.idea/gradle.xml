@@ -26,8 +26,10 @@
             <option value="$PROJECT_DIR$/../node_modules/@rnmapbox/maps/android/rctmgl" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-geolocation-service/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-gradle-plugin" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-location/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-maps/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-permissions/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />
           </set>
         </option>
       </GradleProjectSettings>

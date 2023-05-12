@@ -1044,8 +1044,9 @@ extension MapboxMap {
 // MARK: - Attribution
 
 extension MapboxMap: AttributionDataSource {
-    internal func loadAttributions(completion: @escaping ([Attribution]) -> Void) {
-        Attribution.parse(style.sourceAttributions(), completion: completion)
+    internal func attributions() -> [Attribution] {
+        let attributions = Attribution.parse(style.sourceAttributions())
+        return attributions
     }
 }
 
@@ -1142,22 +1143,6 @@ extension MapboxMap {
         return ViewAnnotationOptions(options)
     }
 
-}
-
-// MARK: - TileCover
-
-extension MapboxMap {
-
-    /// Returns array of tile identifiers that cover current map camera.
-    ///
-    /// - Parameters:
-    ///  - options: Options for the tile cover method.
-    @_spi(Experimental)
-    public func tileCover(for options: TileCoverOptions) -> [CanonicalTileID] {
-        __map.__tileCover(
-            for: MapboxCoreMaps.TileCoverOptions(options),
-            cameraOptions: nil)
-    }
 }
 
 // MARK: - Map Recorder

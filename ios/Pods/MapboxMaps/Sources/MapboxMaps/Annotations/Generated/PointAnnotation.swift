@@ -41,20 +41,18 @@ public struct PointAnnotation: Annotation {
     }
 
     /// Create a point annotation with a `Point` and an optional identifier.
-    public init(id: String = UUID().uuidString, point: Point, isSelected: Bool = false, isDraggable: Bool = false) {
+    public init(id: String = UUID().uuidString, point: Point) {
         self.id = id
         self.point = point
-        self.isSelected = isSelected
-        self.isDraggable = isDraggable
     }
 
     /// Create a point annotation with a coordinate and an optional identifier
     /// - Parameters:
     ///   - id: Optional identifier for this annotation
     ///   - coordinate: Coordinate where this annotation should be rendered
-    public init(id: String = UUID().uuidString, coordinate: CLLocationCoordinate2D, isSelected: Bool = false, isDraggable: Bool = false) {
+    public init(id: String = UUID().uuidString, coordinate: CLLocationCoordinate2D) {
         let point = Point(coordinate)
-        self.init(id: id, point: point, isSelected: isSelected, isDraggable: isDraggable)
+        self.init(id: id, point: point)
     }
 
     // MARK: - Style Properties -

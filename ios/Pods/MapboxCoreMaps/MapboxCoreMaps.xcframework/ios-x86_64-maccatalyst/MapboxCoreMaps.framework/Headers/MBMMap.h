@@ -10,8 +10,6 @@
 @class MBXFeature;
 #import <MapboxCoreMaps/MBMCameraManager.h>
 
-@class MBMCameraOptions;
-@class MBMCanonicalTileID;
 @class MBMMapMemoryBudget;
 @class MBMMapOptions;
 @class MBMRenderCacheOptions;
@@ -22,7 +20,6 @@
 @class MBMScreenCoordinate;
 @class MBMSize;
 @class MBMSourceQueryOptions;
-@class MBMTileCoverOptions;
 @class MBMViewAnnotationOptions;
 @class MBXCancelable;
 @protocol MBMMapClient;

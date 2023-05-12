@@ -60,7 +60,6 @@ internal class MapboxCompassOrnamentView: UIButton {
     }
 
     func updateImage(image: UIImage?) {
-        let image = image ?? createCompassImage()
         guard let image = image else { return }
         NSLayoutConstraint.deactivate(containerViewConstraints)
         containerView.image = image

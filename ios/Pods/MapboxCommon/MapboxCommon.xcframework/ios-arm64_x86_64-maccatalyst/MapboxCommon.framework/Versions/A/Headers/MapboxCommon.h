@@ -1,4 +1,3 @@
-#import <MapboxCommon/MBXDataRef.h>
 #import <MapboxCommon/MBXFeature.h>
 #import <MapboxCommon/MBXGeometry.h>
 #import <MapboxCommon/MBXTilesetDescriptor.h>

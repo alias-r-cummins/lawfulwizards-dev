@@ -98,12 +98,12 @@ PODS:
   - GoogleMaps/Maps (7.0.0):
     - GoogleMaps/Base
   - libevent (2.1.12)
-  - MapboxCommon (23.4.0)
-  - MapboxCoreMaps (10.12.2):
-    - MapboxCommon (~> 23.4)
-  - MapboxMaps (10.12.2):
-    - MapboxCommon (= 23.4.0)
-    - MapboxCoreMaps (= 10.12.2)
+  - MapboxCommon (23.2.3)
+  - MapboxCoreMaps (10.10.0):
+    - MapboxCommon (~> 23.2)
+  - MapboxMaps (10.10.2):
+    - MapboxCommon (= 23.2.3)
+    - MapboxCoreMaps (= 10.10.0)
     - MapboxMobileEvents (= 1.0.10)
     - Turf (~> 2.0)
   - MapboxMobileEvents (1.0.10)
@@ -329,6 +329,8 @@ PODS:
     - Google-Maps-iOS-Utils (= 4.1.0)
     - GoogleMaps (= 7.0.0)
     - React-Core
+  - react-native-location (2.5.0):
+    - React
   - react-native-maps (1.3.2):
     - React-Core
   - React-perflogger (0.69.3)
@@ -397,14 +399,14 @@ PODS:
     - React-jsi (= 0.69.3)
     - React-logger (= 0.69.3)
     - React-perflogger (= 0.69.3)
-  - rnmapbox-maps (10.0.4):
-    - MapboxMaps (~> 10.12.2)
+  - rnmapbox-maps (10.0.0-beta.64):
+    - MapboxMaps (~> 10.10.0)
     - React
     - React-Core
-    - rnmapbox-maps/DynamicLibrary (= 10.0.4)
+    - rnmapbox-maps/DynamicLibrary (= 10.0.0-beta.64)
     - Turf
-  - rnmapbox-maps/DynamicLibrary (10.0.4):
-    - MapboxMaps (~> 10.12.2)
+  - rnmapbox-maps/DynamicLibrary (10.0.0-beta.64):
+    - MapboxMaps (~> 10.10.0)
     - React
     - React-Core
     - Turf
@@ -467,6 +469,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
+  - react-native-location (from `../node_modules/react-native-location`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -559,6 +562,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-location:
+    :path: "../node_modules/react-native-location"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
   React-perflogger:
@@ -614,9 +619,9 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: 3343332b18dfd5be8f1f44edd7d481ace3da4d9a
   GoogleMaps: 6e9c923ca035989709fcb5771544fda4cc5fa2a4
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MapboxCommon: 2945d39158111455f353524f3c2ad356bd8d546a
-  MapboxCoreMaps: 8f355514ac5b573967badd9cf8e482561d6e8e2d
-  MapboxMaps: 9e0873d7f8bddf5751791da7be2560b4157f3c95
+  MapboxCommon: e7948335faacbe6f8b9b115511fd0dd0354bf565
+  MapboxCoreMaps: 4075a9e415b9b3ab6229d09623fef5f791826a5b
+  MapboxMaps: d8cf7d214d94ec18790c338f3a3fe59dd4048e97
   MapboxMobileEvents: de50b3a4de180dd129c326e09cd12c8adaaa46d6
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   Permission-LocationAccuracy: 76df17de5c6b8bc2eee34e61ee92cdd7a864c73d
@@ -638,6 +643,7 @@ SPEC CHECKSUMS:
   React-logger: 23a50ef4c18bf9adbb51e2c979318e6b3a2e44a1
   react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
   react-native-google-maps: 035ad2f9b4974f22af3d4d4c6993960a181b0aaf
+  react-native-location: 5a40ec1cc6abf2f6d94df979f98ec76c3a415681
   react-native-maps: 085f614cf14d3637b2048bb9752da5b1c27c2886
   React-perflogger: 39d2ba8cbcac54d1bb1d9a980dab348e96aef467
   React-RCTActionSheet: b1ad907a2c8f8e4d037148ca507b7f2d6ab1c66d
@@ -651,7 +657,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: dd8099eb46e9cee4692934bc8cbe5e9a4f5e8d31
   React-runtimeexecutor: 607eb048e22a16388c908ee1f6644200e8d1e19b
   ReactCommon: af7636436b382db7cde4583bbd642f0978e6e3ed
-  rnmapbox-maps: 9408c83b0f68d3a2df201f197ed159ee76767fe0
+  rnmapbox-maps: 80e50a60882744e9636d70fa3d3e91976b39e842
   RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608

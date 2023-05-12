@@ -194,17 +194,6 @@ internal final class MapViewDependencyProvider: MapViewDependencyProviderProtoco
             cameraAnimatorsRunnerEnablable: gesturesCameraAnimatorsRunnerEnablable)
     }
 
-    private func makeInterruptDecelerationGestureHandler(view: UIView,
-                                                         cameraAnimationsManager: CameraAnimationsManagerProtocol) -> GestureHandler {
-        let gestureRecognizer = TouchBeganGestureRecognizer()
-        gestureRecognizer.cancelsTouchesInView = false
-        gestureRecognizer.delaysTouchesEnded = false
-        view.addGestureRecognizer(gestureRecognizer)
-
-        return InterruptDecelerationGestureHandler(gestureRecognizer: gestureRecognizer,
-                                                   cameraAnimationsManager: cameraAnimationsManager)
-    }
-
     internal func makeGestureManager(view: UIView,
                                      mapboxMap: MapboxMapProtocol,
                                      cameraAnimationsManager: CameraAnimationsManagerProtocol) -> GestureManager {
@@ -235,9 +224,6 @@ internal final class MapViewDependencyProvider: MapViewDependencyProviderProtoco
                 view: view,
                 cameraAnimationsManager: cameraAnimationsManager),
             anyTouchGestureHandler: makeAnyTouchGestureHandler(view: view),
-            interruptDecelerationGestureHandler: makeInterruptDecelerationGestureHandler(
-                view: view,
-                cameraAnimationsManager: cameraAnimationsManager),
             mapboxMap: mapboxMap)
     }
 
@@ -254,17 +240,16 @@ internal final class MapViewDependencyProvider: MapViewDependencyProviderProtoco
         let offsetPointCalculator = OffsetPointCalculator(mapboxMap: mapboxMap)
         let offsetLineStringCalculator = OffsetLineStringCalculator(mapboxMap: mapboxMap)
         let offsetPolygonCalculator = OffsetPolygonCalculator(mapboxMap: mapboxMap)
-        let factory = AnnotationManagerFactory(
-            style: style,
-            displayLinkCoordinator: displayLinkCoordinator,
-            offsetPointCalculator: offsetPointCalculator,
-            offsetPolygonCalculator: offsetPolygonCalculator,
-            offsetLineStringCalculator: offsetLineStringCalculator)
+
         return AnnotationOrchestratorImpl(
             tapGestureRecognizer: tapGetureRecognizer,
             longPressGestureRecognizer: longPressGestureRecognizer,
             mapFeatureQueryable: mapFeatureQueryable,
-            factory: factory)
+            style: style,
+            displayLinkCoordinator: displayLinkCoordinator,
+            offsetPointCalculator: offsetPointCalculator,
+            offsetLineStringCalculator: offsetLineStringCalculator,
+            offsetPolygonCalculator: offsetPolygonCalculator)
     }
 
     internal func makeLocationProducer(mayRequestWhenInUseAuthorization: Bool,

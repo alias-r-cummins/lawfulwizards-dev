@@ -270,7 +270,7 @@ public class CircleAnnotationManager: AnnotationManagerInternal {
     }
 
     internal func handleDragBegin(with featureIdentifiers: [String]) {
-        guard let annotation = annotations.first(where: { featureIdentifiers.contains($0.id) && $0.isDraggable }) else { return }
+        guard let annotation = annotations.first(where: { featureIdentifiers.contains($0.id) }) else { return }
         createDragSourceAndLayer()
 
         annotationBeingDragged = annotation
@@ -303,7 +303,7 @@ public class CircleAnnotationManager: AnnotationManagerInternal {
         self.annotationBeingDragged = nil
 
         // avoid blinking annotation by waiting
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.removeDragSourceAndLayer()
         }
     }

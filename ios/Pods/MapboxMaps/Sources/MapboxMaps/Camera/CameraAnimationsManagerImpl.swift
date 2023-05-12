@@ -6,7 +6,6 @@ internal protocol CameraAnimationsManagerProtocol: AnyObject {
     var cameraAnimators: [CameraAnimator] { get }
 
     func cancelAnimations()
-    func cancelAnimations(withOwners owners: [AnimationOwner], andTypes types: [AnimationType])
 
     @discardableResult
     func fly(to: CameraOptions,
@@ -72,10 +71,6 @@ internal final class CameraAnimationsManagerImpl: CameraAnimationsManagerProtoco
     /// See ``CameraAnimationsManager/cancelAnimations()``.
     internal func cancelAnimations() {
         runner.cancelAnimations()
-    }
-
-    internal func cancelAnimations(withOwners owners: [AnimationOwner], andTypes types: [AnimationType]) {
-        runner.cancelAnimations(withOwners: owners, andTypes: types)
     }
 
     // MARK: - High-Level Animation APIs

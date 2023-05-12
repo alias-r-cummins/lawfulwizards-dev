@@ -1,5 +1,4 @@
 import UIKit
-import os
 
 public protocol GestureManagerDelegate: AnyObject {
 
@@ -116,7 +115,6 @@ public final class GestureManager: GestureHandlerDelegate {
     private let quickZoomGestureHandler: FocusableGestureHandlerProtocol
     private let singleTapGestureHandler: GestureHandler
     private let anyTouchGestureHandler: GestureHandler
-    private let interruptDecelerationGestureHandler: GestureHandler
     private let mapboxMap: MapboxMapProtocol
 
     internal init(panGestureHandler: PanGestureHandlerProtocol,
@@ -128,7 +126,6 @@ public final class GestureManager: GestureHandlerDelegate {
                   quickZoomGestureHandler: FocusableGestureHandlerProtocol,
                   singleTapGestureHandler: GestureHandler,
                   anyTouchGestureHandler: GestureHandler,
-                  interruptDecelerationGestureHandler: GestureHandler,
                   mapboxMap: MapboxMapProtocol) {
         self.panGestureHandler = panGestureHandler
         self.pinchGestureHandler = pinchGestureHandler
@@ -139,7 +136,6 @@ public final class GestureManager: GestureHandlerDelegate {
         self.singleTapGestureHandler = singleTapGestureHandler
         self.anyTouchGestureHandler = anyTouchGestureHandler
         self.rotateGestureHandler = rotateGestureHandler
-        self.interruptDecelerationGestureHandler = interruptDecelerationGestureHandler
         self.mapboxMap = mapboxMap
 
         panGestureHandler.delegate = self
@@ -173,7 +169,6 @@ public final class GestureManager: GestureHandlerDelegate {
             }
         }
 
-        OSLog.poi.signpostEvent("Gesture began", message: "type: \(gestureType)")
         mapboxMap.beginGesture()
         delegate?.gestureManager(self, didBegin: gestureType)
     }
@@ -189,8 +184,6 @@ public final class GestureManager: GestureHandlerDelegate {
                 return
             }
         }
-
-        OSLog.poi.signpostEvent("Gesture ended", message: "type: \(gestureType)")
         mapboxMap.endGesture()
         delegate?.gestureManager(self, didEnd: gestureType, willAnimate: willAnimate)
     }
