@@ -10,8 +10,9 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import Mapbox, { MarkerView, Callout } from '@rnmapbox/maps';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { wp } from './helper';
+import { calculateDistance, wp } from './helper';
 import * as Location from 'react-native-location';
+import SoundPlayer from 'react-native-sound-player'
 
 
 
@@ -19,20 +20,7 @@ Mapbox.setWellKnownTileServer(Platform.OS === "ios" ? 'mapbox' : "Mapbox");
 Mapbox.setAccessToken('sk.eyJ1Ijoic2lyYWptdW5lZXIiLCJhIjoiY2xoYnloaTNkMDJlNzNmbzJlN3o2Y2pkdSJ9.u1QlCvD_wSJkeb-pmM1Wxg');
 Geolocation.setRNConfiguration({ authorizationLevel: 'always' });
 Geocoder.init("AIzaSyDpVrgba7CrGoP5144CtbxhQ6Q5_e8Y_Kg");
-const locations = [
-    {
-        lat: 31.407085,
-        lng: 73.147595
-    },
-    {
-        lat: 31.407085,
-        lng: 73.148590
-    },
-    {
-        lat: 31.4504,
-        lng: 73.135
-    }
-]
+ 
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -45,14 +33,31 @@ class Home extends Component {
                 longitudeDelta: 0.8,
             },
             formatedAddress: "",
-            coordinates: [
-                [-73.99155, 40.73581],
-                [-73.99155, 40.73683],
-                [73.135, 31.4506],
+            coordinates: [ 
             ],
+            locations:[]
         }
     }
     async componentDidMount() {
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+        fetch("https://location-server.herokuapp.com/location/get", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                if (result?.length > 0) {
+                   
+                    this.setState({ coordinates: result.map(i => ([+i.long, +i.lat])), locations:result.map(i => ({
+                        lat: +i?.lat,
+                        lng: +i?.long
+                    })) })
+                }
+            })
+            .catch(error => console.log('error', error));
+
+
         let granted = await Location.requestPermission({ ios: "whenInUse", android: { detail: "fine" } });
 
         if (!granted) {
@@ -60,8 +65,14 @@ class Home extends Component {
 
             //alert('Permission to access location was denied');
         }
+        console.log(granted, "grantedgrantedgrantedgrantedgranted")
         Geocoder.init("AIzaSyDpVrgba7CrGoP5144CtbxhQ6Q5_e8Y_Kg");
-        this.getOneTimeLocation()
+        this.getOneTimeLocation1()
+        if (granted) {
+            setInterval(() => {
+                this.getOneTimeLocation()
+            }, 1000);
+        }
         request(PERMISSIONS.IOS.LOCATION_ALWAYS).then((RESULTS) => {
             switch (RESULTS) {
                 case RESULTS.UNAVAILABLE:
@@ -81,6 +92,7 @@ class Home extends Component {
                     console.log("The permission is granted");
                     // Permission has been granted - app can request location coordinates
                     this.getOneTimeLocation();
+                    this.getOneTimeLocation1()
                     break;
                 case RESULTS.BLOCKED:
                     console.log("The permission is denied and not requestable anymore");
@@ -88,7 +100,7 @@ class Home extends Component {
             }
         });
     }
-    getOneTimeLocation = () => {
+    getOneTimeLocation1 = () => {
 
         Geolocation.getCurrentPosition(
             (position) => {
@@ -99,8 +111,8 @@ class Home extends Component {
                     latitudeDelta: 0.002,
                     longitudeDelta: 0.002,
                 };
-                console.log(position, "posiposiposiposiposi")
-                let res = locations.find(f => f.lat === position.coords.latitude && f.lng === position.coords.longitude)
+                // console.log(position, "posiposiposiposiposi")
+                let res = this.state.locations.find(f => f.lat === position.coords.latitude && f.lng === position.coords.longitude)
                 if (res) {
                     alert("Near location")
                 }
@@ -116,6 +128,58 @@ class Home extends Component {
                     error: error.message,
                     loading: false,
                 });
+            },
+            { enableHighAccuracy: false, timeout: 200000, maximumAge: 5000 }
+        );
+    };
+    getOneTimeLocation = () => {
+
+        Geolocation.getCurrentPosition(
+            (position) => {
+
+                const region = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    latitudeDelta: 0.002,
+                    longitudeDelta: 0.002,
+                };
+                // console.log(position, "posiposiposiposiposi")
+                const isNearby = this.state.locations.forEach(coordinate => {
+                    const distance = calculateDistance(
+                        position.coords.latitude,
+                        position.coords.longitude,
+                        coordinate.lat,
+                        coordinate.lng
+                    );
+
+                    // return distance <= maximumDistance;
+                    if (distance * 1000 <= 500) {
+                        try {
+                            if (distance * 1000 <= 500) {
+                                SoundPlayer.setVolume(0.3)
+                            }
+                            if (distance * 1000 <= 300) {
+                                SoundPlayer.setVolume(0.5)
+                            }
+                            if (distance * 1000 <= 100) {
+                                SoundPlayer.setVolume(0.7)
+                            }
+                            if (distance * 1000 <= 50) {
+                                SoundPlayer.setVolume(1)
+                            }
+                            SoundPlayer.playSoundFile('beep', 'mp3')
+                            // SoundPlayer.playUrl('https://firebasestorage.googleapis.com/v0/b/quotewell.appspot.com/o/beep.mp3?alt=media&token=fe1ac97b-2614-4189-aa18-1e40b3623705')
+                        } catch (e) {
+                            console.log(`cannot play the sound file`, e)
+                        }
+
+                    }
+                });
+
+                // this.map.animateToRegion(region, 2000)
+            },
+            (error) => {
+
             },
             { enableHighAccuracy: false, timeout: 200000, maximumAge: 5000 }
         );
@@ -144,7 +208,7 @@ class Home extends Component {
             .then((responseJson) => {
                 const userLocation = responseJson?.results[0]?.geometry.location;
                 console.log(responseJson?.results[0]?.formatted_address, "userLocation")
-                let res = locations.find(f => f.lat === responseJson?.results[0]?.geometry.location.lat && f.lng === responseJson?.results[0]?.geometry.location.lng)
+                let res = this.state.locations.find(f => f.lat === responseJson?.results[0]?.geometry.location.lat && f.lng === responseJson?.results[0]?.geometry.location.lng)
                 if (res) {
                     alert("near location")
                 }
@@ -156,12 +220,37 @@ class Home extends Component {
     };
     onUserLocationUpdate(location) {
 
-        let res = locations.find(f => f.lat === location.coords.latitude && f.lng === location.coords.longitude)
+        // Check if user location is near any location in the array
+        // const isNearby = locations.forEach(coordinate => {
+        //     const distance = calculateDistance(
+        //         location.coords.latitude,
+        //         location.coords.longitude,
+        //         coordinate.lat,
+        //         coordinate.lng
+        //     );
+
+        //     // return distance <= maximumDistance;
+        //     if(distance < 1){
+        //         try { 
+        //             SoundPlayer.setVolume(1)
+        //             SoundPlayer.playSoundFile('beep', 'mp3')
+        //             // SoundPlayer.playUrl('https://firebasestorage.googleapis.com/v0/b/quotewell.appspot.com/o/beep.mp3?alt=media&token=fe1ac97b-2614-4189-aa18-1e40b3623705')
+        //         } catch (e) {
+        //             console.log(`cannot play the sound file`, e)
+        //         }
+
+        //     }
+        // });
+
+
+        let res = this.state.locations.find(f => f.lat === location.coords.latitude && f.lng === location.coords.longitude)
         if (res) {
-            alert("near location")
+            // alert("near location")
         }
     }
     render() {
+
+        console.log(this.state.locations, "wergeth4egreterwt")
         return (
             <Mapbox.MapView
                 // logoEnabled={false}

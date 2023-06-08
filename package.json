@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "releaseMac": "yarn react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release/ && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew assembleRelease && cd .."
+    "releaseMac": "yarn react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release/ && cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "@rnmapbox/maps": "10.0.0-beta.64",
@@ -20,6 +20,8 @@
     "react-native-location": "^2.5.0",
     "react-native-maps": "^1.3.2",
     "react-native-permissions": "^3.6.1",
+    "react-native-sound": "^0.11.2",
+    "react-native-sound-player": "^0.13.2",
     "react-native-status-bar-height": "^2.6.0",
     "react-native-vector-icons": "^9.2.0"
   },

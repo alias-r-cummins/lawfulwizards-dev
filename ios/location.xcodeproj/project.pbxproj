@@ -14,6 +14,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		99980D4E8182648B725DC4BC /* libPods-location-locationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2F7E4909EA57B20F728DC5 /* libPods-location-locationTests.a */; };
 		DBAFD32A8BC87428417B9CD7 /* libPods-location.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B309E6170C1143DA676CB652 /* libPods-location.a */; };
+		FAF5A1522A31998500B01470 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAF5A1512A31998500B01470 /* beep.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		9F87C63A89469DD62141EF3F /* Pods-location-locationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-location-locationTests.debug.xcconfig"; path = "Target Support Files/Pods-location-locationTests/Pods-location-locationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B309E6170C1143DA676CB652 /* libPods-location.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-location.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FAF5A1512A31998500B01470 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beep.mp3; path = ../android/app/src/main/res/raw/beep.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				FAF5A1512A31998500B01470 /* beep.mp3 */,
 				13B07FAE1A68108700A75B9A /* location */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* locationTests */,
@@ -244,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				FAF5A1522A31998500B01470 /* beep.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4K7A63BDB4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = location/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -510,6 +515,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4K7A63BDB4;
 				INFOPLIST_FILE = location/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

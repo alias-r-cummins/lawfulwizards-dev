@@ -29,6 +29,8 @@
             <option value="$PROJECT_DIR$/../node_modules/react-native-location/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-maps/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-permissions/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-sound-player/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-sound/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />
           </set>
         </option>
