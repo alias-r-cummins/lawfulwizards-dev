@@ -20,7 +20,7 @@ Mapbox.setWellKnownTileServer(Platform.OS === "ios" ? 'mapbox' : "Mapbox");
 Mapbox.setAccessToken('sk.eyJ1Ijoic2lyYWptdW5lZXIiLCJhIjoiY2xoYnloaTNkMDJlNzNmbzJlN3o2Y2pkdSJ9.u1QlCvD_wSJkeb-pmM1Wxg');
 Geolocation.setRNConfiguration({ authorizationLevel: 'always' });
 Geocoder.init("AIzaSyDpVrgba7CrGoP5144CtbxhQ6Q5_e8Y_Kg");
- 
+
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -33,9 +33,11 @@ class Home extends Component {
                 longitudeDelta: 0.8,
             },
             formatedAddress: "",
-            coordinates: [ 
+            coordinates: [
             ],
-            locations:[]
+            locations: [],
+            allData: [],
+            selectedCords: null
         }
     }
     async componentDidMount() {
@@ -48,11 +50,14 @@ class Home extends Component {
             .then(response => response.json())
             .then(result => {
                 if (result?.length > 0) {
-                   
-                    this.setState({ coordinates: result.map(i => ([+i.long, +i.lat])), locations:result.map(i => ({
-                        lat: +i?.lat,
-                        lng: +i?.long
-                    })) })
+
+                    this.setState({
+                        coordinates: result.map(i => ({ cords: [+i.long, +i.lat], data: i })), locations: result.map(i => ({
+                            lat: +i?.lat,
+                            lng: +i?.long
+                        })),
+                        allData: result
+                    })
                 }
             })
             .catch(error => console.log('error', error));
@@ -250,10 +255,12 @@ class Home extends Component {
     }
     render() {
 
-        console.log(this.state.locations, "wergeth4egreterwt")
+
+        console.log(this.state.coordinates, "wergeth4egreterwt")
         return (
             <Mapbox.MapView
                 // logoEnabled={false}
+                onPress={() => this.setState({ selectedCords: null })}
 
                 cor con reg style={{ flex: 1 }} >
                 {/* <Mapbox.Camera zoomLevel={5} coordinate={[20.5937, 78.9629,]} /> */}
@@ -274,17 +281,43 @@ class Home extends Component {
                     centerCoordinate={[this.state.region?.longitude, this.state?.region?.latitude]}
                 />
                 {
+                    this.state?.selectedCords === null &&
                     this.state.coordinates.map((item, index) =>
                         <Mapbox.PointAnnotation
+                            style={{ zIndex: 100 }}
                             key={index}
-                            // onSelected={() => alert("df")}
-                            coordinate={item}
-                            id="pt-ann"
+                            onSelected={() => this.setState({ selectedCords: item })}
+                            coordinate={item?.cords}
+                            id={`pt-ann${index}`}
                         >
-                            <MaterialCommunityIcons name="map-marker-radius" size={30} />
-                            <Callout title="This is a sample loading a remote image" />
+                            <MaterialCommunityIcons style={{ zIndex: 100 }} onPress={() => this.setState({ selectedCords: item })} name="map-marker-radius" color={"#000"} size={30} />
+                            {/* <Callout containerStyle={{ backgroundColor: "#fff", width: 150, height: 120, borderRadius: 8, padding: 5, alignItems: "center", justifyContent: "center" }}  >
+
+                                <Image style={{ width: 50, height: 50, alignSelf: "center" }} resizeMode="contain" source={{ uri: item?.data?.image }} />
+                                <Text style={{ textAlign: "center", color: "#000", width: 130, marginTop: 5 }} numberOfLines={2} >{item?.data?.name}</Text>
+
+                            </Callout> */}
                         </Mapbox.PointAnnotation>
                     )
+                }
+                {
+                    this.state?.selectedCords &&
+
+                    <Mapbox.MarkerView
+                        id="locationView"
+                        coordinate={this.state?.selectedCords?.cords}
+                        anchor={{ x: 0.5, y: 1 }}
+                    >
+
+                        <View style={{ backgroundColor: "#fff", width: 150, height: 120, borderRadius: 8, padding: 5, alignItems: "center", justifyContent: "center" }}  >
+
+                            <Image style={{ width: 50, height: 50, alignSelf: "center" }} resizeMode="contain" source={{ uri: this.state?.selectedCords?.data?.image }} />
+                            <Text style={{ textAlign: "center", color: "#000", width: 130, marginTop: 5 }} numberOfLines={2} >{this.state?.selectedCords?.data?.name}</Text>
+
+                        </View>
+
+                    </Mapbox.MarkerView>
+
                 }
 
                 {/* <View style={{ position: "absolute", width: "90%", zIndex: 2, marginTop: getStatusBarHeight() + 10, alignSelf: "center" }} >
